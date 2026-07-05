@@ -155,7 +155,8 @@ a { color: inherit; text-decoration: none; }
 .card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
 .card:hover { transform: translateY(-6px); border-color: rgba(243,165,54,0.4); background: var(--surface-2); }
 .card:hover::before { transform: scaleX(1); }
-.card__icon { font-size: 2rem; margin-bottom: 18px; }
+.card__icon { width: 56px; height: 56px; margin-bottom: 20px; color: var(--blue); }
+.card__icon svg { width: 100%; height: 100%; display: block; }
 .card h3 { font-size: 1.2rem; margin-bottom: 10px; }
 .card p { color: var(--muted); font-size: 0.98rem; }
 
