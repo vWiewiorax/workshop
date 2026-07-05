@@ -93,10 +93,14 @@ form.addEventListener("submit", (e) => {
   form.reset();
 });
 
-// ===== Galeria — infinite scroll (duplicate items) =====
+// ===== Galeria / Opinie — infinite scroll (duplicate items) =====
 const galleryTrack = document.querySelector(".gallery__track");
 if (galleryTrack) {
   galleryTrack.innerHTML += galleryTrack.innerHTML;
+}
+const quotesTrack = document.querySelector(".quotes__track");
+if (quotesTrack) {
+  quotesTrack.innerHTML += quotesTrack.innerHTML;
 }
 
 // ===== Galeria — lightbox =====
