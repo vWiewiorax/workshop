@@ -94,7 +94,7 @@ a { color: inherit; text-decoration: none; }
 .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
 .hero__photo {
   position: absolute; inset: 0;
-  background: url("/images/zdjopinie1.jpg") center 30%/cover no-repeat;
+  background: url("/images/hero-bmw.jpg") center 35%/cover no-repeat;
   transform: scale(1.05);
 }
 .hero__overlay {
