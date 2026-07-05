@@ -92,3 +92,43 @@ form.addEventListener("submit", (e) => {
   note.className = "form__note ok";
   form.reset();
 });
+
+// ===== Galeria — lightbox =====
+const galleryItems = Array.from(document.querySelectorAll("#gallery .gallery__item img"));
+const lb = document.getElementById("lightbox");
+const lbImg = document.getElementById("lightboxImg");
+const lbCaption = document.getElementById("lightboxCaption");
+let lbIndex = 0;
+
+const showLightbox = (i) => {
+  lbIndex = (i + galleryItems.length) % galleryItems.length;
+  const img = galleryItems[lbIndex];
+  lbImg.src = img.src;
+  lbImg.alt = img.alt;
+  lbCaption.textContent = img.alt;
+};
+const openLightbox = (i) => {
+  showLightbox(i);
+  lb.classList.add("open");
+  lb.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+};
+const closeLightbox = () => {
+  lb.classList.remove("open");
+  lb.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+};
+
+galleryItems.forEach((img, i) => img.addEventListener("click", () => openLightbox(i)));
+document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
+document.getElementById("lightboxPrev").addEventListener("click", () => showLightbox(lbIndex - 1));
+document.getElementById("lightboxNext").addEventListener("click", () => showLightbox(lbIndex + 1));
+lb.addEventListener("click", (e) => {
+  if (e.target === lb) closeLightbox();
+});
+document.addEventListener("keydown", (e) => {
+  if (!lb.classList.contains("open")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowLeft") showLightbox(lbIndex - 1);
+  if (e.key === "ArrowRight") showLightbox(lbIndex + 1);
+});
