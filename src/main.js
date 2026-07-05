@@ -69,12 +69,19 @@ const countObserver = new IntersectionObserver(
 counters.forEach((c) => countObserver.observe(c));
 
 // ===== Formularz kontaktowy =====
+// Wysyłka na e-mail przez Web3Forms (https://web3forms.com) — darmowe, bez backendu.
+// Klucz dostępowy wygenerujesz na web3forms.com (podajesz swój e-mail, zgłoszenia
+// przychodzą na tę skrzynkę). Wklej go poniżej lub ustaw VITE_WEB3FORMS_KEY w .env.
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || "YOUR_WEB3FORMS_ACCESS_KEY";
+
 const form = document.getElementById("contactForm");
 const note = document.getElementById("formNote");
-form.addEventListener("submit", (e) => {
+const submitBtn = form.querySelector('button[type="submit"]');
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const name = form.name.value.trim();
   const phone = form.phone.value.trim();
+  const car = form.car.value.trim();
   const message = form.message.value.trim();
 
   if (!name || !phone || !message) {
@@ -88,9 +95,49 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
-  note.textContent = "Dziękujemy! Zgłoszenie zostało przyjęte — oddzwonimy najszybciej jak to możliwe.";
-  note.className = "form__note ok";
-  form.reset();
+  if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === "YOUR_WEB3FORMS_ACCESS_KEY") {
+    note.textContent =
+      "Formularz nie jest jeszcze podłączony do e-maila (brak klucza Web3Forms). Zadzwoń: +48 793 980 808.";
+    note.className = "form__note err";
+    return;
+  }
+
+  const btnText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Wysyłanie...";
+  note.textContent = "";
+  note.className = "form__note";
+
+  try {
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `Nowe zgłoszenie ze strony WorkshopJS — ${name}`,
+        from_name: "WorkshopJS — formularz",
+        name,
+        phone,
+        car: car || "—",
+        message,
+      }),
+    });
+    const data = await res.json();
+    if (data.success) {
+      note.textContent =
+        "Dziękujemy! Zgłoszenie zostało wysłane — oddzwonimy najszybciej jak to możliwe.";
+      note.className = "form__note ok";
+      form.reset();
+    } else {
+      throw new Error(data.message || "error");
+    }
+  } catch (err) {
+    note.textContent = "Nie udało się wysłać zgłoszenia. Zadzwoń: +48 793 980 808.";
+    note.className = "form__note err";
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = btnText;
+  }
 });
 
 // ===== Galeria / Opinie — infinite scroll (duplicate items) =====
