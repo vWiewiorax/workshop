@@ -71,73 +71,57 @@ counters.forEach((c) => countObserver.observe(c));
 // ===== Formularz kontaktowy =====
 // Wysyłka na e-mail przez FormSubmit (https://formsubmit.co) — darmowe, bez backendu i bez rejestracji.
 // Ustaw docelowy adres e-mail w VITE_FORMSUBMIT_EMAIL (.env). Przy pierwszym zgłoszeniu
-// FormSubmit wyśle na ten adres link aktywacyjny — trzeba go raz kliknąć.
+// FormSubmit pokaże stronę aktywacyjną / wyśle link na ten adres — trzeba go raz potwierdzić.
+// Używamy natywnego POST-a (nie AJAX), bo endpoint AJAX bywa blokowany przez Cloudflare.
 const FORMSUBMIT_EMAIL = import.meta.env.VITE_FORMSUBMIT_EMAIL || "YOUR_EMAIL";
 
 const form = document.getElementById("contactForm");
 const note = document.getElementById("formNote");
-const submitBtn = form.querySelector('button[type="submit"]');
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+
+// Komunikat po powrocie z FormSubmit (?sent=1)
+if (new URLSearchParams(location.search).get("sent") === "1") {
+  note.textContent = "Dziękujemy! Zgłoszenie zostało wysłane — oddzwonimy najszybciej jak to możliwe.";
+  note.className = "form__note ok";
+  history.replaceState(null, "", location.pathname + "#kontakt");
+}
+
+const emailReady = FORMSUBMIT_EMAIL && FORMSUBMIT_EMAIL !== "YOUR_EMAIL";
+if (emailReady) {
+  form.action = `https://formsubmit.co/${encodeURIComponent(FORMSUBMIT_EMAIL)}`;
+  let next = form.querySelector('input[name="_next"]');
+  if (!next) {
+    next = document.createElement("input");
+    next.type = "hidden";
+    next.name = "_next";
+    form.appendChild(next);
+  }
+  next.value = `${location.origin}${location.pathname}?sent=1#kontakt`;
+}
+
+form.addEventListener("submit", (e) => {
   const name = form.name.value.trim();
   const phone = form.phone.value.trim();
-  const car = form.car.value.trim();
-  const message = form.message.value.trim();
 
-  if (!name || !phone || !message) {
+  if (!name || !phone || !form.message.value.trim()) {
+    e.preventDefault();
     note.textContent = "Uzupełnij imię, telefon i opis usterki.";
     note.className = "form__note err";
     return;
   }
   if (!/^[+\d][\d\s-]{6,}$/.test(phone)) {
+    e.preventDefault();
     note.textContent = "Podaj poprawny numer telefonu.";
     note.className = "form__note err";
     return;
   }
-
-  if (!FORMSUBMIT_EMAIL || FORMSUBMIT_EMAIL === "YOUR_EMAIL") {
+  if (!emailReady) {
+    e.preventDefault();
     note.textContent =
       "Formularz nie jest jeszcze podłączony do e-maila (brak adresu docelowego). Zadzwoń: +48 793 980 808.";
     note.className = "form__note err";
     return;
   }
-
-  const btnText = submitBtn.textContent;
-  submitBtn.disabled = true;
-  submitBtn.textContent = "Wysyłanie...";
-  note.textContent = "";
-  note.className = "form__note";
-
-  try {
-    const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(FORMSUBMIT_EMAIL)}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        _subject: `Nowe zgłoszenie ze strony WorkshopJS — ${name}`,
-        _template: "table",
-        _captcha: "false",
-        Imię: name,
-        Telefon: phone,
-        "Model auta": car || "—",
-        Wiadomość: message,
-      }),
-    });
-    const data = await res.json();
-    if (data.success === true || data.success === "true") {
-      note.textContent =
-        "Dziękujemy! Zgłoszenie zostało wysłane — oddzwonimy najszybciej jak to możliwe.";
-      note.className = "form__note ok";
-      form.reset();
-    } else {
-      throw new Error(data.message || "error");
-    }
-  } catch (err) {
-    note.textContent = "Nie udało się wysłać zgłoszenia. Zadzwoń: +48 793 980 808.";
-    note.className = "form__note err";
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.textContent = btnText;
-  }
+  // walidacja OK → pozwalamy na natywny POST do FormSubmit
 });
 
 // ===== Galeria / Opinie — infinite scroll (duplicate items) =====
