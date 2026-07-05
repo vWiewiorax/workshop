@@ -1,31 +1,34 @@
-# JSWorkshop — strona serwisu BMW
+# JSWorkshop — strona serwisu BMW (Vite)
 
 Nowoczesna, responsywna strona wizytówka (one-page) dla serwisu BMW **JSWorkshop**
-(Łańcut, Rzeszów i okolice). Czysty HTML/CSS/JS, bez zależności i bez procesu budowania.
+(Łańcut, Rzeszów i okolice). Projekt oparty o **Vite** (vanilla JS + CSS).
 
-## Sekcje
-- **Hero** z animowanymi licznikami i CTA
-- **Usługi** (mechanika, diagnostyka, elektronika, coding/retrofit, klimatyzacja, obsługa okresowa)
-- **O nas**
-- **Dlaczego my**
-- **Opinie** klientów
-- **Kontakt** — dane, formularz zgłoszeniowy i mapa (OpenStreetMap)
-- Stopka + przycisk szybkiego telefonu (FAB)
+## Wymagania
+- Node.js 18+ (zalecane 20/22)
 
-## Uruchomienie lokalne
+## Uruchomienie (localhost)
 ```bash
-python3 -m http.server 8080
-# następnie otwórz http://localhost:8080
+npm install
+npm run dev
+# serwer dev: http://localhost:5173
 ```
-Albo po prostu otwórz `index.html` w przeglądarce.
+
+## Build produkcyjny
+```bash
+npm run build      # generuje katalog dist/
+npm run preview    # podgląd builda: http://localhost:4173
+```
 
 ## Struktura
 ```
-index.html
-assets/
-  styles.css
-  script.js
-  favicon.svg
+index.html          # punkt wejścia Vite
+src/
+  main.js           # logika + import stylów
+  styles.css        # style
+public/
+  favicon.svg       # zasoby statyczne serwowane z /
+vite.config.js
+package.json
 ```
 
 ## Do personalizacji

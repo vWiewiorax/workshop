@@ -1,12 +1,17 @@
 {
-  "name": "jsworkshop",
+  "name": "workshopjs",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "Strona wizytówka serwisu BMW JSWorkshop (Łańcut, Rzeszów i okolice)",
   "scripts": {
-    "dev": "npx --yes serve . -l 8080",
-    "start": "npx --yes serve . -l 8080"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": ["bmw", "serwis", "landing-page", "jsworkshop"],
+  "devDependencies": {
+    "vite": "^5.4.10"
+  },
+  "keywords": ["bmw", "serwis", "landing-page", "jsworkshop", "vite"],
   "license": "UNLICENSED"
 }
