@@ -75,13 +75,7 @@ a { color: inherit; text-decoration: none; }
 .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
 
 .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; }
-.brand__logo {
-  width: 34px; height: 34px; border-radius: 50%;
-  background: conic-gradient(#f3a536 0 25%, #0a0b0d 0 50%, #f3a536 0 75%, #0a0b0d 0 100%);
-  display: grid; place-items: center; position: relative;
-  border: 2px solid #cfd6e2;
-}
-.brand__ring { width: 60%; height: 60%; border-radius: 50%; border: 2px solid #cfd6e2; }
+.brand__img { height: 30px; width: auto; display: block; }
 .brand__text { font-size: 1.25rem; letter-spacing: -0.02em; }
 .brand__text span { color: var(--blue); }
 
@@ -100,7 +94,7 @@ a { color: inherit; text-decoration: none; }
 .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; }
 .hero__photo {
   position: absolute; inset: 0;
-  background: url("/images/hero-workshop2.jpg") center/cover no-repeat;
+  background: url("/images/zdjopinie1.jpg") center 30%/cover no-repeat;
   transform: scale(1.05);
 }
 .hero__overlay {
@@ -221,6 +215,7 @@ a { color: inherit; text-decoration: none; }
 /* ===== Stopka ===== */
 .footer { background: #07080a; border-top: 1px solid var(--line); }
 .footer__inner { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; padding: 56px 0; }
+.footer__logo { height: 34px; width: auto; display: block; }
 .footer__brand p { color: var(--muted); margin-top: 12px; max-width: 320px; font-size: 0.95rem; }
 .footer__nav { display: flex; flex-direction: column; gap: 12px; }
 .footer__nav a { color: var(--muted); transition: color 0.2s ease; }
