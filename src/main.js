@@ -69,10 +69,10 @@ const countObserver = new IntersectionObserver(
 counters.forEach((c) => countObserver.observe(c));
 
 // ===== Formularz kontaktowy =====
-// Wysyłka na e-mail przez Web3Forms (https://web3forms.com) — darmowe, bez backendu.
-// Klucz dostępowy wygenerujesz na web3forms.com (podajesz swój e-mail, zgłoszenia
-// przychodzą na tę skrzynkę). Wklej go poniżej lub ustaw VITE_WEB3FORMS_KEY w .env.
-const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || "YOUR_WEB3FORMS_ACCESS_KEY";
+// Wysyłka na e-mail przez FormSubmit (https://formsubmit.co) — darmowe, bez backendu i bez rejestracji.
+// Ustaw docelowy adres e-mail w VITE_FORMSUBMIT_EMAIL (.env). Przy pierwszym zgłoszeniu
+// FormSubmit wyśle na ten adres link aktywacyjny — trzeba go raz kliknąć.
+const FORMSUBMIT_EMAIL = import.meta.env.VITE_FORMSUBMIT_EMAIL || "YOUR_EMAIL";
 
 const form = document.getElementById("contactForm");
 const note = document.getElementById("formNote");
@@ -95,9 +95,9 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === "YOUR_WEB3FORMS_ACCESS_KEY") {
+  if (!FORMSUBMIT_EMAIL || FORMSUBMIT_EMAIL === "YOUR_EMAIL") {
     note.textContent =
-      "Formularz nie jest jeszcze podłączony do e-maila (brak klucza Web3Forms). Zadzwoń: +48 793 980 808.";
+      "Formularz nie jest jeszcze podłączony do e-maila (brak adresu docelowego). Zadzwoń: +48 793 980 808.";
     note.className = "form__note err";
     return;
   }
@@ -109,21 +109,21 @@ form.addEventListener("submit", async (e) => {
   note.className = "form__note";
 
   try {
-    const res = await fetch("https://api.web3forms.com/submit", {
+    const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(FORMSUBMIT_EMAIL)}`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({
-        access_key: WEB3FORMS_ACCESS_KEY,
-        subject: `Nowe zgłoszenie ze strony WorkshopJS — ${name}`,
-        from_name: "WorkshopJS — formularz",
-        name,
-        phone,
-        car: car || "—",
-        message,
+        _subject: `Nowe zgłoszenie ze strony WorkshopJS — ${name}`,
+        _template: "table",
+        _captcha: "false",
+        Imię: name,
+        Telefon: phone,
+        "Model auta": car || "—",
+        Wiadomość: message,
       }),
     });
     const data = await res.json();
-    if (data.success) {
+    if (data.success === true || data.success === "true") {
       note.textContent =
         "Dziękujemy! Zgłoszenie zostało wysłane — oddzwonimy najszybciej jak to możliwe.";
       note.className = "form__note ok";
