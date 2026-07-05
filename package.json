@@ -1,0 +1,12 @@
+{
+  "name": "jsworkshop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Strona wizytówka serwisu BMW JSWorkshop (Łańcut, Rzeszów i okolice)",
+  "scripts": {
+    "dev": "npx --yes serve . -l 8080",
+    "start": "npx --yes serve . -l 8080"
+  },
+  "keywords": ["bmw", "serwis", "landing-page", "jsworkshop"],
+  "license": "UNLICENSED"
+}

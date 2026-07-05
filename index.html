@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JSWorkshop — Serwis BMW | Łańcut, Rzeszów i okolice</title>
+  <meta name="description" content="JSWorkshop — specjalistyczny serwis BMW w Łańcucie i Rzeszowie. Diagnostyka komputerowa, mechanika, elektronika, coding i obsługa okresowa. Umów wizytę online." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <!-- ===== Nawigacja ===== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#hero" class="brand" aria-label="JSWorkshop — strona główna">
+        <span class="brand__logo" aria-hidden="true">
+          <span class="brand__ring"></span>
+        </span>
+        <span class="brand__text">JS<span>Workshop</span></span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Nawigacja główna">
+        <a href="#uslugi">Usługi</a>
+        <a href="#o-nas">O nas</a>
+        <a href="#dlaczego">Dlaczego my</a>
+        <a href="#opinie">Opinie</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#kontakt" class="btn btn--sm btn--primary nav__cta">Umów wizytę</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Otwórz menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__stripes" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <p class="hero__eyebrow reveal">Specjalistyczny serwis BMW &bull; Łańcut &middot; Rzeszów</p>
+      <h1 class="hero__title reveal">Twoje BMW<br />w rękach <span>pasjonatów</span></h1>
+      <p class="hero__lead reveal">Diagnostyka komputerowa, mechanika, elektronika i coding. Naprawiamy tak, jak sami chcielibyśmy mieć naprawione — rzetelnie, z gwarancją i na oryginalnych częściach.</p>
+      <div class="hero__actions reveal">
+        <a href="#kontakt" class="btn btn--primary">Umów wizytę</a>
+        <a href="#uslugi" class="btn btn--ghost">Zobacz usługi</a>
+      </div>
+      <div class="hero__stats reveal">
+        <div class="stat"><span class="stat__num" data-count="12">0</span><span class="stat__label">lat doświadczenia</span></div>
+        <div class="stat"><span class="stat__num" data-count="4500">0</span><span class="stat__label">obsłużonych aut</span></div>
+        <div class="stat"><span class="stat__num" data-count="100">0</span><span class="stat__label">% skupienia na BMW</span></div>
+      </div>
+    </div>
+    <a href="#uslugi" class="hero__scroll" aria-label="Przewiń w dół">
+      <span></span>
+    </a>
+  </section>
+
+  <!-- ===== Pasek zaufania ===== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>BMW</span><span>&bull;</span><span>Diagnostyka ISTA</span><span>&bull;</span><span>Coding &amp; retrofit</span><span>&bull;</span><span>Mechanika</span><span>&bull;</span><span>Elektronika</span><span>&bull;</span><span>Klimatyzacja</span><span>&bull;</span><span>Geometria</span><span>&bull;</span>
+      <span>BMW</span><span>&bull;</span><span>Diagnostyka ISTA</span><span>&bull;</span><span>Coding &amp; retrofit</span><span>&bull;</span><span>Mechanika</span><span>&bull;</span><span>Elektronika</span><span>&bull;</span><span>Klimatyzacja</span><span>&bull;</span><span>Geometria</span><span>&bull;</span>
+    </div>
+  </div>
+
+  <!-- ===== Usługi ===== -->
+  <section class="section" id="uslugi">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="section__eyebrow">Co robimy</p>
+        <h2 class="section__title">Kompleksowa opieka nad Twoim BMW</h2>
+        <p class="section__sub">Od przeglądu okresowego po zaawansowaną diagnostykę i modyfikacje. Wszystko w jednym miejscu.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card reveal">
+          <div class="card__icon">🔧</div>
+          <h3>Mechanika pojazdowa</h3>
+          <p>Naprawy silników, skrzyń biegów, zawieszenia i układu hamulcowego. Wymiana rozrządu, sprzęgła i łańcucha.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon">💻</div>
+          <h3>Diagnostyka komputerowa</h3>
+          <p>Profesjonalna diagnostyka ISTA/D+P. Odczyt i kasowanie błędów, analiza logów, dobór właściwej naprawy.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon">⚡</div>
+          <h3>Elektronika i elektryka</h3>
+          <p>Naprawa modułów, wiązek, czujników i sterowników. Lokalizacja usterek elektrycznych oraz zwarć.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon">🧩</div>
+          <h3>Coding &amp; retrofit</h3>
+          <p>Aktywacja funkcji, doposażenie (Apple CarPlay, kamera cofania, DAB), kodowanie modułów i personalizacja.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon">❄️</div>
+          <h3>Klimatyzacja</h3>
+          <p>Serwis i odgrzybianie, uzupełnianie czynnika R134a/R1234yf, naprawa sprężarek i szczelności układu.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon">🛠️</div>
+          <h3>Obsługa okresowa</h3>
+          <p>Przeglądy, wymiana olejów i filtrów, płynów eksploatacyjnych. Reset inspekcji zgodnie z CBS.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== O nas ===== -->
+  <section class="section section--alt" id="o-nas">
+    <div class="container about">
+      <div class="about__media reveal">
+        <div class="about__photo">
+          <span class="about__badge">Łańcut &middot; Rzeszów</span>
+        </div>
+        <div class="about__accent" aria-hidden="true"></div>
+      </div>
+      <div class="about__body reveal">
+        <p class="section__eyebrow">O JSWorkshop</p>
+        <h2 class="section__title">Warsztat prowadzony przez ludzi, którzy żyją marką BMW</h2>
+        <p>JSWorkshop to serwis stworzony z pasji do niemieckiej inżynierii. Skupiamy się wyłącznie na markach z grupy BMW — dzięki temu znamy te auta na wylot, od klasyków po najnowsze modele z hybrydowym napędem.</p>
+        <p>Pracujemy na profesjonalnym sprzęcie diagnostycznym i oryginalnym oprogramowaniu producenta. Zanim zaczniemy naprawę, dokładnie tłumaczymy zakres prac i przedstawiamy wycenę — bez niespodzianek na końcu.</p>
+        <ul class="about__list">
+          <li>Gwarancja na wykonane usługi</li>
+          <li>Oryginalne części i sprawdzone zamienniki</li>
+          <li>Transparentna wycena przed naprawą</li>
+          <li>Auto zastępcze na czas dłuższych napraw</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Dlaczego my ===== -->
+  <section class="section" id="dlaczego">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="section__eyebrow">Dlaczego my</p>
+        <h2 class="section__title">Powody, dla których kierowcy nam ufają</h2>
+      </div>
+      <div class="feats">
+        <div class="feat reveal">
+          <span class="feat__num">01</span>
+          <h3>Specjalizacja BMW</h3>
+          <p>Nie robimy „wszystkiego dla wszystkich". Dzięki wąskiej specjalizacji naprawiamy szybciej i trafniej.</p>
+        </div>
+        <div class="feat reveal">
+          <span class="feat__num">02</span>
+          <h3>Sprzęt producenta</h3>
+          <p>Diagnostyka na oprogramowaniu ISTA oraz dedykowanych narzędziach — pełny dostęp do systemów auta.</p>
+        </div>
+        <div class="feat reveal">
+          <span class="feat__num">03</span>
+          <h3>Uczciwa wycena</h3>
+          <p>Znasz koszt zanim zaczniemy. Doradzamy najlepszą ekonomicznie ścieżkę naprawy.</p>
+        </div>
+        <div class="feat reveal">
+          <span class="feat__num">04</span>
+          <h3>Terminowość</h3>
+          <p>Szanujemy Twój czas. Umówiona wizyta to konkretny termin, nie „gdzieś w tym tygodniu".</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Opinie ===== -->
+  <section class="section section--alt" id="opinie">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="section__eyebrow">Opinie</p>
+        <h2 class="section__title">Co mówią kierowcy z regionu</h2>
+      </div>
+      <div class="quotes">
+        <figure class="quote reveal">
+          <div class="quote__stars">★★★★★</div>
+          <blockquote>„Wreszcie serwis, który zna się na BMW. Zdiagnozowali usterkę, z którą jeździłem od miesięcy w innych warsztatach. Polecam każdemu z Rzeszowa i okolic."</blockquote>
+          <figcaption><strong>Marcin K.</strong><span>BMW F30 320d</span></figcaption>
+        </figure>
+        <figure class="quote reveal">
+          <div class="quote__stars">★★★★★</div>
+          <blockquote>„Doposażenie w CarPlay i kamerę cofania zrobione perfekcyjnie. Wszystko wygląda fabrycznie. Konkretna wycena i dotrzymany termin."</blockquote>
+          <figcaption><strong>Anna W.</strong><span>BMW G20 330i</span></figcaption>
+        </figure>
+        <figure class="quote reveal">
+          <div class="quote__stars">★★★★★</div>
+          <blockquote>„Uczciwe podejście i fachowa robota. Naprawili rozrząd w N47 bez kombinowania. Z Łańcuta mam blisko, ale wróciłbym nawet z daleka."</blockquote>
+          <figcaption><strong>Tomasz P.</strong><span>BMW E90 318d</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA / Kontakt ===== -->
+  <section class="section contact" id="kontakt">
+    <div class="container contact__inner">
+      <div class="contact__info reveal">
+        <p class="section__eyebrow">Kontakt</p>
+        <h2 class="section__title">Umów wizytę w JSWorkshop</h2>
+        <p class="contact__lead">Napisz lub zadzwoń — dobierzemy dogodny termin i wstępnie ocenimy zakres prac. Obsługujemy Łańcut, Rzeszów i okolice.</p>
+
+        <ul class="contact__details">
+          <li>
+            <span class="contact__ico">📍</span>
+            <div><strong>Adres</strong><br />ul. Przykładowa 12, 37-100 Łańcut</div>
+          </li>
+          <li>
+            <span class="contact__ico">📞</span>
+            <div><strong>Telefon</strong><br /><a href="tel:+48500600700">+48 500 600 700</a></div>
+          </li>
+          <li>
+            <span class="contact__ico">✉️</span>
+            <div><strong>E-mail</strong><br /><a href="mailto:kontakt@jsworkshop.pl">kontakt@jsworkshop.pl</a></div>
+          </li>
+          <li>
+            <span class="contact__ico">🕒</span>
+            <div><strong>Godziny</strong><br />Pn–Pt 8:00–18:00 &middot; Sob 9:00–14:00</div>
+          </li>
+        </ul>
+      </div>
+
+      <form class="contact__form reveal" id="contactForm" novalidate>
+        <div class="field">
+          <label for="name">Imię i nazwisko</label>
+          <input type="text" id="name" name="name" placeholder="Jan Kowalski" required />
+        </div>
+        <div class="field field--split">
+          <div>
+            <label for="phone">Telefon</label>
+            <input type="tel" id="phone" name="phone" placeholder="+48 ..." required />
+          </div>
+          <div>
+            <label for="car">Model BMW</label>
+            <input type="text" id="car" name="car" placeholder="np. F30 320d" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Opis usterki / usługi</label>
+          <textarea id="message" name="message" rows="4" placeholder="Opisz krótko, w czym możemy pomóc..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary btn--block">Wyślij zgłoszenie</button>
+        <p class="form__note" id="formNote" role="status"></p>
+      </form>
+    </div>
+
+    <div class="map reveal">
+      <iframe
+        title="Mapa — JSWorkshop Łańcut"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=22.20%2C50.05%2C22.28%2C50.09&amp;layer=mapnik&amp;marker=50.0688%2C22.2296"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- ===== Stopka ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand__text">JS<span>Workshop</span></span>
+        <p>Specjalistyczny serwis BMW — Łańcut, Rzeszów i okolice.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Stopka">
+        <a href="#uslugi">Usługi</a>
+        <a href="#o-nas">O nas</a>
+        <a href="#opinie">Opinie</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <div class="footer__contact">
+        <a href="tel:+48500600700">+48 500 600 700</a>
+        <a href="mailto:kontakt@jsworkshop.pl">kontakt@jsworkshop.pl</a>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <div class="container">
+        <span>© <span id="year"></span> JSWorkshop. Wszelkie prawa zastrzeżone.</span>
+        <span class="footer__disclaimer">BMW jest zastrzeżonym znakiem towarowym BMW AG. JSWorkshop jest niezależnym serwisem.</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="tel:+48500600700" class="fab" aria-label="Zadzwoń do JSWorkshop">📞</a>
+
+  <script src="assets/script.js" defer></script>
+</body>
+</html>
