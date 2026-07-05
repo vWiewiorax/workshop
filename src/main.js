@@ -93,15 +93,22 @@ form.addEventListener("submit", (e) => {
   form.reset();
 });
 
+// ===== Galeria — infinite scroll (duplicate items) =====
+const galleryTrack = document.querySelector(".gallery__track");
+if (galleryTrack) {
+  galleryTrack.innerHTML += galleryTrack.innerHTML;
+}
+
 // ===== Galeria — lightbox =====
 const galleryItems = Array.from(document.querySelectorAll("#gallery .gallery__item img"));
+const originalCount = galleryItems.length / 2;
 const lb = document.getElementById("lightbox");
 const lbImg = document.getElementById("lightboxImg");
 const lbCaption = document.getElementById("lightboxCaption");
 let lbIndex = 0;
 
 const showLightbox = (i) => {
-  lbIndex = (i + galleryItems.length) % galleryItems.length;
+  lbIndex = ((i % originalCount) + originalCount) % originalCount;
   const img = galleryItems[lbIndex];
   lbImg.src = img.src;
   lbImg.alt = img.alt;
