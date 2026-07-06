@@ -2,6 +2,13 @@ node_modules/
 .DS_Store
 *.log
 .cache/
-dist/
+
+# Next.js
+.next/
+out/
+next-env.d.ts
+
+# env
 .env
 .env.local
+.env*.local
