@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://workshopjs.pl/sitemap.xml
